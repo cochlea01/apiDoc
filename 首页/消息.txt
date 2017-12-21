@@ -1,0 +1,24 @@
+接口名称：getConversationList
+接口入参：
+{
+  user_id:""
+}
+返回参数：
+{
+  conversations:[
+      {
+        id:"",
+        img:"",
+        title:"",
+        content:"",
+        update_date:""
+      }, {
+        id:"",
+        img:"",
+        title:"",
+        content:"",
+        update_date:""
+      }
+
+  ]
+}

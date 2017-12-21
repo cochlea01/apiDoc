@@ -1,0 +1,100 @@
+一、首页
+接口名称：getIndexInfo
+返回参数：
+1、图片轮播（对象数组）
+imgList:[{
+    url: 'javascript:',
+    img: 'https://static.vux.li/demo/1.jpg',
+    title: '送你一朵fua'
+  }, {
+    url: 'javascript:',
+    img: 'https://static.vux.li/demo/2.jpg',
+    title: '送你一辆车'
+  }, {
+    url: 'javascript:',
+    img: 'https://static.vux.li/demo/5.jpg',
+    title: '送你一次旅行',
+    fallbackImg: 'https://static.vux.li/demo/3.jpg'
+  }]
+
+2、通知轮播（对象数组）
+noticeList:[{
+    id: '123456',
+    img: 'https://static.vux.li/demo/1.jpg',
+    content: 'xxx设计师通过了平台审核'
+  }, {
+    id: '123456',
+    img: 'https://static.vux.li/demo/1.jpg',
+    content: 'xxx设计师通过了平台审核'
+  }, {
+    id: '123456',
+    img: 'https://static.vux.li/demo/1.jpg',
+    content: 'xxx设计师通过了平台审核'
+  }]
+3、订单列表（对象数组）
+orderList:{
+    orders:[{
+	  id:""
+	  order_intro:"描述"
+	  order_price:"价格",
+	  order_deadline:"截止日期",
+	  order_type:"类型",
+	  order_parts:"user_id1,user_id2,user_id3",
+	  order_part_num:"参与人数",
+	  order_status:"状态",
+	  order_user_id:"用户ID"
+    },{
+	  id:""
+	  order_intro:"描述"
+	  order_price:"价格",
+	  order_deadline:"截止日期",
+	  order_type:"类型",
+	  order_parts:"user_id1,user_id2,user_id3",
+	  order_part_num:"参与人数",
+	  order_status:"状态",
+	  order_user_id:"用户ID"
+    }],
+    users:[
+      {id:"",img:"",name:""},
+      {id:"",img:"",name:""},
+      {id:"",img:"",name:""}
+    ],
+    parts:{
+      order_id:[
+        {id:"",img:""},
+        {id:"",img:""},
+        {id:"",img:""}
+      ],
+      order_id:[
+        {id:"",img:""},
+        {id:"",img:""},
+        {id:"",img:""}
+      ]
+    },
+    imgs:{
+      order_id:[
+        "img_path",
+        "img_path",
+        "img_path"
+      ],
+      order_id:[
+        "img_path",
+        "img_path",
+        "img_path"
+      ],
+      order_id:[
+        "img_path",
+        "img_path",
+        "img_path"
+      ]
+    }
+  }
+
+后端接口：
+1、智能排序
+接口名称：intelligentSorting
+接口入参：｛
+    sortFlag:""
+｝
+接口返回参数：
+同上orderlist

@@ -1,0 +1,16 @@
+接口名称：getAllSorts
+返回参数：
+1、图片轮播（对象数组）
+typeList:[{
+    id: '123456',
+    img: 'https://static.vux.li/demo/1.jpg',
+    title: '策划设计'
+  }, {
+    id: '123456',
+    img: 'https://static.vux.li/demo/1.jpg',
+    title: '策划设计'
+  }, {
+    id: '123456',
+    img: 'https://static.vux.li/demo/1.jpg',
+    title: '策划设计'
+  },]

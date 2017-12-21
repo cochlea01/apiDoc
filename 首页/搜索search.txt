@@ -1,0 +1,46 @@
+1、搜索初始化
+接口名称：getHotAndHistory
+接口返回参数：
+{
+  hotDesigners：[
+      {id:"123456",user_name:"设计师名称1"},
+      {id:"123456",user_name:"设计师名称1"},
+      {id:"123456",user_name:"设计师名称1"}
+  ],
+  searchHistory：["设计师名称"，"设计师类型"]
+}
+
+2、搜索设计师
+接口名称：fuzzyQueryDesigners
+接口入参：
+{
+  search_title:""
+}
+接口返回参数：
+{
+  designers:[
+   {
+     id:"123456",
+     img:"http://yemao/wozuishuai.png",
+     user_name:"张小韬",
+     working_years:5,（工龄，int类型）
+     sign_state:0,（签约状态，int类型）
+     real_name_certification:0,（实名认证，int类型）
+     platform_certification:0,（平台认证，int类型）
+     personal_grade:0,（个人评分，int类型）
+     class_id:"",（设计师分类）
+     class_name:"",（设计师分类名称）
+     price:10000（价格，int类型）
+     description:"个人描述"
+   },   
+  ]
+}
+
+3、搜索订单
+接口名称：fuzzyQueryOrders
+接口入参：
+{
+  search_title:""
+}
+接口返回参数：
+同首页orderlist

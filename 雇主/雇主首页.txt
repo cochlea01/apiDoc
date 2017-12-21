@@ -1,0 +1,31 @@
+﻿1.列表排序
+资源定位：
+    listSorting
+交互方式：
+    get
+请求参数：
+    {
+        sortFlag:"":"排序标志"
+    }
+返回参数：
+data{
+    orders:[
+        {
+            id:"数据id",
+            order_user_id:"用户ID"
+            order_price:"价格",
+            order_deadline:"截止日期",
+            order_type:"类型",
+            order_intro:"描述", 
+            order_competitor:[
+                {
+                    user_id:"用户id",
+                    user_sculpture:"头像"
+                },
+                ...
+            ]
+            order_status:"状态",
+        },
+        ...
+    ]
+}

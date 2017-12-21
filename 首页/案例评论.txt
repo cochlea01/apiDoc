@@ -1,0 +1,45 @@
+1、初始化案例详情
+接口名称：getCaseInfoById
+接口入参：
+{
+  id:""
+}
+接口返回参数：
+{
+  caseInfo:{//案例详情
+    id:"",
+    case_img:"",
+    case_intro:"",
+    like_num:"",
+    view_num:"",
+    create_date:"",
+    user_id:""
+  },
+  caseUser:{//案例创建人
+    id:"",
+    user_name:""
+    img:""
+  }
+  comments:[
+    {
+      id:"",
+      content:"",
+      create_date:"",
+      employer_grade:4,(雇主评分，int)
+      is_employer:0,(雇主标识，int),
+      case_id:"",
+      user_id:
+    }
+  ],
+  comment_users:[//评论人列表
+    {
+      id:"",
+      user_name:""
+      img:""
+    }, {
+      id:"",
+      user_name:""
+      img:""
+    }
+  ]
+}
