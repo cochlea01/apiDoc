@@ -24,6 +24,6 @@
         3已完善
 
 抢单成功失败状态
-    competite_sucess
-        1成功
-        -1不成功"
+    competite_sucess_state
+    1成功
+    -1不成功"

@@ -1,0 +1,27 @@
+orderList=
+        {
+            orders:[
+                {
+                    id:"数据id",
+                    order_user_id:"用户ID",
+                    order_user_name:"用户名字",
+                    order_budget:"订单预算",
+                    order_deadline:"截止日期",
+                    order_type:"类型",
+                    order_intro:"描述", 
+                    project_picture:[
+                        "img地址",...
+                    ],
+                    competite_state:"抢单状态0抢单中1已被抢",
+                    improving_state:"完善状态0未完善1雇主请求设计师完善2设计师收到雇主完善请求3已完善",
+                    order_competitor:[
+                        {
+                            head_sculpture:"头像",
+                            competite_sucess_state:"抢单是否成功1成功-1不成功"
+                        },
+                        ...
+                    ]
+                },
+                ...
+            ]
+        }

@@ -23,8 +23,8 @@
         }
     返回参数：
         {
-            code:"-1",
-            message:"errorMessage"
+            code："状态值",
+            msg:"返回消息"
         }
 
 2.雇主任务大厅订单列表
@@ -39,31 +39,7 @@
             competite_state:"抢单状态"
         }
     返回参数
-        {
-            orders:[
-                {
-                    id:"数据id",
-                    order_user_id:"用户ID",
-                    order_user_name:"用户名字",
-                    order_budget:"订单预算",
-                    order_deadline:"截止日期",
-                    order_type:"类型",
-                    order_intro:"描述", 
-                    project_picture:[
-                        "img地址",...
-                    ],
-                    competite_state:"抢单状态0抢单中1已被抢",
-                    improving_state:"完善状态0未完善1雇主请求设计师完善2设计师收到雇主完善请求3已完善"
-                },
-                ...
-            ]
-            order_competitor:[
-                {
-                    head_sculpture:"头像"
-                },
-                ...
-            ]
-        }
+        orderList
 
 3.首页订单列表
     资源定位：
@@ -76,31 +52,7 @@
             competite_state:"抢单状态"
         }
     返回参数：
-        {
-            orders:[
-                {
-                    id:"数据id",
-                    order_user_id:"用户ID",
-                    order_user_name:"用户名字",
-                    order_budget:"订单预算",
-                    order_deadline:"截止日期",
-                    order_type:"类型",
-                    order_intro:"描述", 
-                    project_picture:[
-                        "img地址",...
-                    ],
-                    competite_state:"抢单状态0抢单中1已被抢",
-                    improving_state:"完善状态0未完善1待完善2已完善"
-                },
-                ...
-            ]
-            order_competitor:[
-                {
-                    head_sculpture:"头像"
-                },
-                ...
-            ]
-        }
+        orderList
 
 4.订单详情
     资源定位：
@@ -136,7 +88,8 @@
                     headSculpture:"头像",
                     schemeExplains:"方案说明",
                     quotation:"设计师报价",
-                    taskTime:"任务时长"
+                    taskTime:"任务时长",
+                    competite_sucess_state:"抢单是否成功1成功-1不成功"
                 },
                 ...
             ]
@@ -156,33 +109,7 @@
             user_type:"用户类型"
         }
     返回参数：
-        {
-            orders:[
-                {
-                    id:"数据id",
-                    order_user_id:"用户ID",
-                    order_user_name:"用户名字",
-                    order_budget:"订单预算",
-                    order_deadline:"截止日期",
-                    order_type:"类型",
-                    order_intro:"描述", 
-                    project_picture:[
-                        "img地址",...
-                    ],
-                    competite_state:"抢单状态0抢单中1已被抢",
-                    improving_state:"完善状态0未完善1待完善2已完善"
-                },
-                ...
-            ]
-            order_competitor:[
-                {
-                    head_sculpture:"头像"
-                },
-                ...
-            ]
-        }
-
-
+        orderList
 
 6.设计师填写抢单信息
     资源定位：
@@ -200,8 +127,8 @@
         2.将该订单信息加入该设计师待处理订单列表
     返回参数：
         {
-            code："-1",
-            message:"errorMessage"
+            code："状态值",
+            msg:"返回消息"
         }
 
 7.设计师订单列表
@@ -218,32 +145,7 @@
             user_type:"用户类型"
         }
     返回参数：
-        {
-            orders:[
-                {
-                    id:"数据id",
-                    order_user_id:"用户ID",
-                    order_user_name:"用户名字",
-                    order_budget:"订单预算",
-                    order_deadline:"截止日期",
-                    order_type:"类型",
-                    order_intro:"描述", 
-                    project_picture:[
-                        "img地址",...
-                    ],
-                    competite_state:"抢单状态0抢单中1已被抢",
-                    improving_state:"完善状态0未完善1待完善2已完善",
-                    competite_sucess:"抢单是否成功1成功-1不成功"
-                },
-                ...
-            ]
-            order_competitor:[
-                {
-                    head_sculpture:"头像"
-                },
-                ...
-            ]       
-        }
+        orderList
 
 8.选择设计师列表
     资源定位：
@@ -265,7 +167,8 @@
                     headSculpture:"头像",
                     schemeExplains:"方案说明",
                     quotation:"设计师报价",
-                    taskTime:"任务时长"
+                    taskTime:"任务时长",
+                    competite_sucess_state:"抢单是否成功1成功-1不成功"
                 },
                 ...
             ]
@@ -285,11 +188,11 @@
         2.更新订单"操作状态"improving_state置为1 （待完善订单）
     返回参数：
         {
-            code:"-1",
-            message:"errorMessage"
+            code："状态值",
+            msg:"返回消息"
         }
 
-10.雇主请求完善订单
+10.雇主要求完善订单
     资源定位：
         request_order_improving
     交互方式：
@@ -302,9 +205,10 @@
         1.更新订单(设计师已完善订单状态)improving_state置为2（设计师收到雇主完善请求）
     返回参数：
         {
-            code:"-1",
-            message:"errorMessage"
+            code："状态值",
+            msg:"返回消息"
         }
+
 11.设计师请求完善订单详情
     资源定位：
         get_improving_order_detail
@@ -365,11 +269,11 @@
         如果付款成功，将传trading_state置为3待交付
     返回参数：
         {
-            code:"-1",
-            message:"errorMessage"
+            code："状态值",
+            msg:"返回消息"
         }
 
-13.一键会审        
+13.一键会审
     资源定位：
         review
     请求参数：
@@ -381,8 +285,8 @@
         }
     返回参数：
         {
-            code:"-1",
-            message:"errorMessage"
+            code："状态值",
+            msg:"返回消息"
         }
 
 14.提交设计
@@ -397,9 +301,10 @@
         1. 更新订单"交易状态"trading_state置为4（已交付）
     返回参数：
         {
-            code:"-1",
-            message:"errorMessage"
+            code："状态值",
+            msg:"返回消息"
         }
+
 15雇主确认提交
     资源定位：
         submitDesign
@@ -412,8 +317,8 @@
         1. 更新订单"交易状态"trading_state置为5（已完成）
     返回参数：
         {
-            code:"-1",
-            message:"errorMessage"
+            code："状态值",
+            msg:"返回消息"
         }
 
 
