@@ -1,0 +1,420 @@
+//订单流程
+
+
+1.雇主发布订单
+    资源定位：
+        releaseAnOrder
+    交互方式：
+        post
+    请求参数：
+        {
+            project_type:"项目类型",
+            project_region:"项目地区",
+            project_title:"项目标题",
+            project_describe:"项目描述",
+            project_budget:"预算",
+            order_deadLine:"抢单截止时间",
+            design_unit:"设计单位（个）",
+            design_area:"设计面积（平米）（与上面设计单位二选一）",
+            design_depth:"设计深度（方案，扩出，施工，三选一）",
+            design_workingHours:"工时",
+            design_startStopTime:"设计起止时间例如2017-01-02/2017-02-02",
+            project_pictures:"上传图片（限制9张）"
+        }
+    返回参数：
+        {
+            code:"-1",
+            message:"errorMessage"
+        }
+
+2.雇主任务大厅订单列表
+    资源定位：
+        getOrderList
+    交互方式：
+        get
+    请求参数：
+        //competite_state:0抢单中，1已被抢
+        {
+            project_type:"项目类型(设计师注册时设计类型)"
+            competite_state:"抢单状态"
+        }
+    返回参数
+        {
+            orders:[
+                {
+                    id:"数据id",
+                    order_user_id:"用户ID",
+                    order_user_name:"用户名字",
+                    order_budget:"订单预算",
+                    order_deadline:"截止日期",
+                    order_type:"类型",
+                    order_intro:"描述", 
+                    project_picture:[
+                        "img地址",...
+                    ],
+                    competite_state:"抢单状态0抢单中1已被抢",
+                    improving_state:"完善状态0未完善1雇主请求设计师完善2设计师收到雇主完善请求3已完善"
+                },
+                ...
+            ]
+            order_competitor:[
+                {
+                    head_sculpture:"头像"
+                },
+                ...
+            ]
+        }
+
+3.首页订单列表
+    资源定位：
+        getOrderList
+    交互方式：
+        get
+    请求参数：
+        //competite_state:0抢单中，1已被抢
+        {
+            competite_state:"抢单状态"
+        }
+    返回参数：
+        {
+            orders:[
+                {
+                    id:"数据id",
+                    order_user_id:"用户ID",
+                    order_user_name:"用户名字",
+                    order_budget:"订单预算",
+                    order_deadline:"截止日期",
+                    order_type:"类型",
+                    order_intro:"描述", 
+                    project_picture:[
+                        "img地址",...
+                    ],
+                    competite_state:"抢单状态0抢单中1已被抢",
+                    improving_state:"完善状态0未完善1待完善2已完善"
+                },
+                ...
+            ]
+            order_competitor:[
+                {
+                    head_sculpture:"头像"
+                },
+                ...
+            ]
+        }
+
+4.订单详情
+    资源定位：
+        getOrderListDetails
+    交互方式：
+        get
+    请求参数：
+        {
+            orderId:"订单id"
+        }
+    返回参数：
+        {
+            projectPicture:["imageUrl",...],
+            projectDescribe:"项目描述",
+            projectType:"项目类型",
+            projectRegion:"项目地区",
+            projectTitle:"项目标题",    
+            budget:"预算",
+            orderDeadLine:"抢单截止时间",
+            designUnit:"设计单位（个）",
+            designArea:"设计面积（平米）（与上面设计单位二选一）",
+            designDepth:"设计深度（方案，扩出，施工，三选一）",
+            designWorkingHours:"工时",
+            designStartStopTime:"设计起止时间例如2017-01-02/2017-02-02",
+            tradingState:"交易状态",
+            competite_state:"抢单状态0抢单中1已被抢",
+            improving_state:"完善状态0未完善1待完善2已完善",
+            order_competitor:[
+                {
+                    competedTime:"抢单时间"
+                    userName:"用户姓名",
+                    userId:"用户id",
+                    headSculpture:"头像",
+                    schemeExplains:"方案说明",
+                    quotation:"设计师报价",
+                    taskTime:"任务时长"
+                },
+                ...
+            ]
+        }
+
+5.雇主订单列表
+    资源定位：
+        getOrderList
+    交互方式：
+        get
+    请求参数：
+        //trading_state:1待处理2待支付3代交付4已完成
+        //user_type:1雇主
+        {
+            user_id:"用户id",
+            trading_state:"交易状态",
+            user_type:"用户类型"
+        }
+    返回参数：
+        {
+            orders:[
+                {
+                    id:"数据id",
+                    order_user_id:"用户ID",
+                    order_user_name:"用户名字",
+                    order_budget:"订单预算",
+                    order_deadline:"截止日期",
+                    order_type:"类型",
+                    order_intro:"描述", 
+                    project_picture:[
+                        "img地址",...
+                    ],
+                    competite_state:"抢单状态0抢单中1已被抢",
+                    improving_state:"完善状态0未完善1待完善2已完善"
+                },
+                ...
+            ]
+            order_competitor:[
+                {
+                    head_sculpture:"头像"
+                },
+                ...
+            ]
+        }
+
+
+
+6.设计师填写抢单信息
+    资源定位：
+        competiteAnOrder
+    交互方式：
+        post
+    请求参数：
+        {
+            quotation:"我的报价",
+            taskTime:"任务时长",
+            schemeExplains:"方案说明"
+        }
+    请求操作：
+        1.将该设计师加入该订单的选择设计师列表
+        2.将该订单信息加入该设计师待处理订单列表
+    返回参数：
+        {
+            code："-1",
+            message:"errorMessage"
+        }
+
+7.设计师订单列表
+    资源定位：
+        getOrderList
+    交互方式：
+        get
+    请求参数：
+        //trading_state:1待处理2待支付3代交付4已完成
+        //user_type:2设计师
+        {
+            user_id:"用户id",
+            trading_state:"交易状态",
+            user_type:"用户类型"
+        }
+    返回参数：
+        {
+            orders:[
+                {
+                    id:"数据id",
+                    order_user_id:"用户ID",
+                    order_user_name:"用户名字",
+                    order_budget:"订单预算",
+                    order_deadline:"截止日期",
+                    order_type:"类型",
+                    order_intro:"描述", 
+                    project_picture:[
+                        "img地址",...
+                    ],
+                    competite_state:"抢单状态0抢单中1已被抢",
+                    improving_state:"完善状态0未完善1待完善2已完善",
+                    competite_sucess:"抢单是否成功1成功-1不成功"
+                },
+                ...
+            ]
+            order_competitor:[
+                {
+                    head_sculpture:"头像"
+                },
+                ...
+            ]       
+        }
+
+8.选择设计师列表
+    资源定位：
+        getListOfDesigner
+    交互方式：
+        get
+    请求参数：
+        {
+            user_id:"用户id",
+            order_id:"订单id"
+        }
+    返回参数：
+        {
+            order_competitor:[
+                {
+                    competedTime:"抢单时间"
+                    userName:"用户姓名",
+                    userId:"用户id",
+                    headSculpture:"头像",
+                    schemeExplains:"方案说明",
+                    quotation:"设计师报价",
+                    taskTime:"任务时长"
+                },
+                ...
+            ]
+        }
+
+9.选择设计师
+    资源定位：
+        getListOfDesigner
+    交互方式：
+        post
+    请求参数：
+        {
+            order_id:"订单编号"
+        }
+    请求操作：
+        1.更新订单"抢单状态"competite_state置为0 （已被抢）
+        2.更新订单"操作状态"improving_state置为1 （待完善订单）
+    返回参数：
+        {
+            code:"-1",
+            message:"errorMessage"
+        }
+
+10.雇主请求完善订单
+    资源定位：
+        request_order_improving
+    交互方式：
+        get
+    请求参数：
+        {
+            order_id:"订单编号"
+        }
+    请求操作：
+        1.更新订单(设计师已完善订单状态)improving_state置为2（设计师收到雇主完善请求）
+    返回参数：
+        {
+            code:"-1",
+            message:"errorMessage"
+        }
+11.设计师请求完善订单详情
+    资源定位：
+        get_improving_order_detail
+    交互方式：
+        get
+    请求参数：
+        {
+            order_id:"订单编号"
+        }
+    返回参数：
+        {
+            project_title:"项目标题",
+            projectDetail:"项目内容",
+            budget:"预算",
+            rush_end_time:"抢单截止时间",
+            design_unit:"设计单位",
+            design_area:"设计面积",
+            number:"个数",
+            design_deep:"设计深度",
+            working_hour:"工时",
+            design_start_end_time:"设计起始时间"
+        }   
+
+11.设计师完善订单
+    资源定位：
+        improve_order
+    交互方式：
+        post
+    请求参数：
+        {
+            project_title:"项目标题",
+            projectDetail:"项目内容",
+            budget:"预算",
+            rush_end_time:"抢单截止时间",
+            design_unit:"设计单位",
+            design_area:"设计面积",
+            number:"个数",
+            design_deep:"设计深度",
+            working_hour:"工时",
+            design_start_end_time:"设计起始时间"
+        }
+    请求操作：
+        1.更新订单信息
+        2.更新订单"设计师已完善订单状态"improving_state置为3（已完善）
+        3.更新订单"交易状态"trading_state置为2(待支付)
+    返回参数：
+        {
+            code:"-1",
+            message:"errorMessage"
+        }
+
+12.支付
+    资源定位：
+        payOrder
+    请求参数：
+        ......
+    请求操作：
+        如果付款成功，将传trading_state置为3待交付
+    返回参数：
+        {
+            code:"-1",
+            message:"errorMessage"
+        }
+
+13.一键会审        
+    资源定位：
+        review
+    请求参数：
+        {
+            user_phone:"手机号",
+            review_message:"会审信息",
+            user_id:"用户id",
+            order_id:"订单编号"
+        }
+    返回参数：
+        {
+            code:"-1",
+            message:"errorMessage"
+        }
+
+14.提交设计
+    资源定位：
+        submitDesign
+    请求参数：
+        {
+            order_id:"订单id",
+            user_id:"用户id",
+        }
+    请求操作：
+        1. 更新订单"交易状态"trading_state置为4（已交付）
+    返回参数：
+        {
+            code:"-1",
+            message:"errorMessage"
+        }
+15雇主确认提交
+    资源定位：
+        submitDesign
+    请求参数：
+        {
+            order_id:"订单id",
+            user_id:"用户id",
+        }
+    请求操作：
+        1. 更新订单"交易状态"trading_state置为5（已完成）
+    返回参数：
+        {
+            code:"-1",
+            message:"errorMessage"
+        }
+
+
+
